@@ -44,6 +44,12 @@ async function loadSeats() {
         
         if (result && result.value) {
             seats = JSON.parse(result.value);
+
+            // 🔽 ここを追加：もし何かの拍子に0件だったら作り直す
+            if (!seats || Object.keys(seats).length === 0) {
+                seats = createInitialSeats();
+                await storage.set('cafe-seats-data', JSON.stringify(seats));
+            }
         } else {
             seats = createInitialSeats();
             await storage.set('cafe-seats-data', JSON.stringify(seats));
