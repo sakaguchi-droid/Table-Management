@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カフェ席管理アプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- ヘッダー -->
+        <div class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>カフェ席管理</h1>
+                    <p class="header-subtitle">
+                        スタッフ用管理画面 • 
+                        <span id="sync-status">全デバイス連動中</span>
+                    </p>
+                </div>
+                <div class="header-right">
+                    <button id="refresh-btn" class="refresh-btn">🔄 更新</button>
+                    <div class="stat-card stat-occupied">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-value"><span id="occupied-count">0</span>/<span id="total-count">0</span></div>
+                        <div class="stat-label">使用中</div>
+                    </div>
+                    <div class="stat-card stat-available">
+                        <div class="stat-icon">🕐</div>
+                        <div class="stat-value" id="available-count">0</div>
+                        <div class="stat-label">空席</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- タブ -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" data-tab="T">
+                    <div class="tab-name">テーブル席</div>
+                    <div class="tab-stats">使用中 <span id="tab-T-count">0</span>/<span id="tab-T-total">0</span></div>
+                </button>
+                <button class="tab" data-tab="C">
+                    <div class="tab-name">カウンター席</div>
+                    <div class="tab-stats">使用中 <span id="tab-C-count">0</span>/<span id="tab-C-total">0</span></div>
+                </button>
+                <button class="tab" data-tab="B">
+                    <div class="tab-name">テラス席</div>
+                    <div class="tab-stats">使用中 <span id="tab-B-count">0</span>/<span id="tab-B-total">0</span></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- 席グリッド -->
+        <div id="seats-grid" class="seats-grid"></div>
+
+        <!-- フッター -->
+        <div class="footer">
+            <p>タップで操作: 空席→スタート / 使用中→一時停止 / 一時停止中→再開 / 「空席に」ボタンでリセット</p>
+            <div class="legend">
+                <span class="legend-item"><span class="legend-color color-available"></span>空席</span>
+                <span class="legend-item"><span class="legend-color color-occupied"></span>使用中</span>
+                <span class="legend-item"><span class="legend-color color-paused"></span>一時停止</span>
+                <span class="legend-item"><span class="legend-color color-overtime"></span>90分超過</span>
+            </div>
+            <p class="sync-info">✓ 複数デバイスでリアルタイム同期中</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
