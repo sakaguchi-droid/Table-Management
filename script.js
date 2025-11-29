@@ -1,3 +1,8 @@
+const SUPABASE_URL = "https://qaicpvxlqzhitomsntzp.supabase.co"; // ← Project URL
+const SUPABASE_ANON_KEY = "sb_publishable_yEomN84STpRh7S6ijtlvWQ_pT7bMKp9";  // ← Publishable key
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 // アプリの状態
 let seats = {};
 let currentTime = Date.now();
